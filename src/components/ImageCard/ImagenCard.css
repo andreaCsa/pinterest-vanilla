@@ -1,0 +1,63 @@
+.image-card {
+    break-inside: avoid;
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+  
+  .image-wrapper {
+    position: relative;
+  }
+  
+  .image-wrapper img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: block;
+  }
+  
+  .visit-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .image-wrapper:hover .visit-btn {
+    opacity: 1;
+  }
+  
+  .image-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+  
+  .author-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .author-name {
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .image-date {
+    margin: 0;
+    font-size: 12px;
+    color: gray;
+  }

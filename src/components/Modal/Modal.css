@@ -1,0 +1,14 @@
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: var(--border-radius);
+  }

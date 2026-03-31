@@ -1,38 +1,31 @@
-import "./style.css";
-import { Gallery } from "./components/Gallery.js";
-import { Header } from "./components/Header.js";
+import "./style.css"
+import { Gallery } from "./components/Gallery/Gallery.js"
+import { Header } from "./components/Header/Header.js"
 
-const app = document.querySelector("#app");
+const app = document.querySelector("#app")
+const headerRoot = document.querySelector("#header-root")
 
 async function init() {
-  app.innerHTML = "";
+  app.innerHTML = ""
+  headerRoot.innerHTML = ""
 
-  const header = Header();
-  app.appendChild(header);
+  const galleryContainer = document.createElement("div")
 
-  const galleryContainer = document.createElement("div");
-  app.appendChild(galleryContainer);
+  const header = Header(async (query) => {
+    if (!query) return
 
-  // CARGA INICIAL
-  const defaultGallery = await Gallery("nature");
-  galleryContainer.appendChild(defaultGallery);
+    galleryContainer.innerHTML = ""
+    const gallery = await Gallery(query)
+    galleryContainer.appendChild(gallery)
+  })
 
-  // BUSCAR
-  document.querySelector("#searchBtn").addEventListener("click", async () => {
-    const query = document.querySelector("#searchInput").value;
-    if (!query) return;
+  headerRoot.appendChild(header)
+  app.appendChild(galleryContainer)
 
-    galleryContainer.innerHTML = "";
-    const gallery = await Gallery(query);
-    galleryContainer.appendChild(gallery);
+  const defaultGallery = await Gallery("nature")
+  galleryContainer.appendChild(defaultGallery)
 
-    document.querySelector("#searchInput").value = "";
-  });
-
-  // LOGO REINICIA
-  document.querySelector(".logo").addEventListener("click", () => {
-    init();
-  });
+  header.querySelector(".logo").addEventListener("click", init)
 }
 
-init();
+init()
